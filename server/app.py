@@ -1,6 +1,7 @@
-from flask import Flask, request, make_response, jsonify
+from flask import Flask, request, make_response, jsonify, abort
 from flask_cors import CORS
 from flask_migrate import Migrate
+from datetime import datetime
 
 from models import db, Message
 
@@ -15,7 +16,7 @@ migrate = Migrate(app, db)
 db.init_app(app)
 
 @app.route('/messages' , methods=['GET'])
-def messages():
+def get_messages():
     messages = Message.query.order_by(Message.created_at).all()
     return [message.to_dict() for message in messages]
 

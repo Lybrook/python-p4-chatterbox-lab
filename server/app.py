@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, jsonify, abort
+from flask import Flask, request,  jsonify, abort
 from flask_cors import CORS
 from flask_migrate import Migrate
 from datetime import datetime
